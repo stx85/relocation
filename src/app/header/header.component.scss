@@ -1,0 +1,25 @@
+.header-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    background-color: #ffffff;
+    flex-wrap: wrap;
+}
+
+.title {
+    position: absolute;
+    width: 100%;
+    align-self: center;
+    text-align: center;
+    font-weight: bolder;
+    color: #3b3b3b;
+    font-size: xx-large;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    opacity: 20;
+    mask: linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255,1) 100%);
+}
