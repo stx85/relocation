@@ -6,6 +6,17 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
 ### Angular ###
 ## Angular ##
 # compiled output
@@ -20,6 +31,12 @@ bower_components/
 
 # IDEs and editors
 .idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
 # misc
 .sass-cache/
@@ -149,6 +166,7 @@ fabric.properties
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 
+
 # Local History for Visual Studio Code
 .history/
 
@@ -159,3 +177,16 @@ fabric.properties
 # Ignore all local history of files
 .history
 .ionide
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
