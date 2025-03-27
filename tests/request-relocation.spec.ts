@@ -249,11 +249,11 @@ test.describe('send request positive group', {
         await page.getByTestId('streetfrom').fill('Technologiestr. 1');
         await page.getByTestId('floorfrom').fill('0');
         await page.getByTestId('elevatorfrom').getByRole('checkbox').check();
-        await page.getByTestId('cityto').fill('Siegendorf');
-        await page.getByTestId('zipto').fill('7011');
-        await page.getByTestId('streetto').fill('Technologiestr. 2');
+        await page.getByTestId('cityto').fill('Wien');
+        await page.getByTestId('zipto').fill('1010');
+        await page.getByTestId('streetto').fill('Ringstrasse 2');
         await page.getByTestId('floorto').fill('1');
-        await page.getByTestId('elevatorto').getByRole('checkbox').check();
+        await page.getByTestId('elevatorto').getByRole('checkbox').uncheck();
         await page.getByTestId('packagingservice').getByRole('checkbox').check();
         await page.getByTestId('sendbutton').click();
     });
@@ -315,6 +315,6 @@ test.describe('send request positive group', {
     });
 
     test('click send request - positive response', async ({ page }) => {
-        await expect(page.getByTestId('packagingservice').getByRole('checkbox')).not.toBeChecked();
+        await expect(page.getByTestId('positiverequestmessage')).toBeVisible();
     });
 });
