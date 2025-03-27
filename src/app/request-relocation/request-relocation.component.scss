@@ -1,0 +1,35 @@
+.container {
+  max-width: 900px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+h4 {
+  margin-bottom: 10px;
+}
+
+.form-check {
+  margin-top: 10px;
+}
+
+.custom-form {
+  width: 100%;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.custom-btn {
+  width: 100%;
+  max-width: 300px;
+}
+
+.positiveresponse {
+  color: #39bd40;
+}
+
+.negativeresponse {
+  color: #ca4040;
+}
