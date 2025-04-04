@@ -8,7 +8,7 @@ import { catchError, map, Observable, of } from 'rxjs';
 })
 export class RelocationRequestBackendService {
 
-  private apiUrl: string = "http://localhost:8090/request";
+  private apiUrl = "http://localhost:8090/request";
 
   constructor(private http: HttpClient) { }
 

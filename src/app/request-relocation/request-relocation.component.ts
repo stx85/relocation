@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
-import { NgModel, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -40,8 +40,8 @@ export class RequestRelocationComponent implements OnInit {
   private readonly _intl = inject(MatDatepickerIntl);
   private readonly _locale = signal(inject<unknown>(MAT_DATE_LOCALE));
   public formGroup!: FormGroup;
-  public isShowPositiveRequest: boolean = false;
-  public isShowNegativeRequest: boolean = false;
+  public isShowPositiveRequest = false;
+  public isShowNegativeRequest = false;
 
   constructor(public formBuilder: FormBuilder, private backendService: RelocationRequestBackendService) {
     this._locale.set('en-US');
