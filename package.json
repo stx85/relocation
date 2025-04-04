@@ -13,7 +13,8 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "format": "npx prettier src --check",
-    "format:fix": "npx prettier src --write"
+    "format:fix": "npx prettier src --write",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -46,6 +47,7 @@
     "angular-eslint": "19.3.0",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.4.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
