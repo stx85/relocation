@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -15,15 +15,12 @@ import { RelocationRequestBackendService } from '../shared/relocation-request-ba
 @Component({
   selector: 'app-request-relocation',
   standalone: true,
-  providers: [
-    provideNativeDateAdapter(),
-    {provide: MAT_DATE_LOCALE, useValue: 'en-US'}
-  ],
+  providers: [provideNativeDateAdapter(), { provide: MAT_DATE_LOCALE, useValue: 'en-US' }],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatFormFieldModule, 
-    MatInputModule, 
+    MatFormFieldModule,
+    MatInputModule,
     MatSelectModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -33,7 +30,7 @@ import { RelocationRequestBackendService } from '../shared/relocation-request-ba
   ],
   templateUrl: './request-relocation.component.html',
   styleUrl: './request-relocation.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequestRelocationComponent implements OnInit {
   private readonly _adapter = inject<DateAdapter<unknown, unknown>>(DateAdapter);
@@ -43,7 +40,10 @@ export class RequestRelocationComponent implements OnInit {
   public isShowPositiveRequest = false;
   public isShowNegativeRequest = false;
 
-  constructor(public formBuilder: FormBuilder, private backendService: RelocationRequestBackendService) {
+  constructor(
+    public formBuilder: FormBuilder,
+    private backendService: RelocationRequestBackendService
+  ) {
     this._locale.set('en-US');
     this._adapter.setLocale(this._locale());
   }
@@ -53,14 +53,14 @@ export class RequestRelocationComponent implements OnInit {
       clientName: ['', [Validators.required]],
       relocationDate: [new Date(), [Validators.required]],
       fromCity: ['', [Validators.required]],
-      fromZip: [0, [Validators.required, Validators.pattern("[0-9]+")]],
+      fromZip: [0, [Validators.required, Validators.pattern('[0-9]+')]],
       fromStreet: ['', [Validators.required]],
-      fromFloor: [0, [Validators.required, Validators.pattern("[0-9]+")]],
+      fromFloor: [0, [Validators.required, Validators.pattern('[0-9]+')]],
       fromElevator: [false, [Validators.required]],
       toCity: ['', [Validators.required]],
-      toZip: [0, [Validators.required, Validators.pattern("[0-9]+")]],
+      toZip: [0, [Validators.required, Validators.pattern('[0-9]+')]],
       toStreet: ['', [Validators.required]],
-      toFloor: [0, [Validators.required, Validators.pattern("[0-9]+")]],
+      toFloor: [0, [Validators.required, Validators.pattern('[0-9]+')]],
       toElevator: [false, [Validators.required]],
       packagingService: [false, [Validators.required]],
     });
@@ -70,7 +70,7 @@ export class RequestRelocationComponent implements OnInit {
 
   onSubmit() {
     if (this.formGroup.valid) {
-      this.backendService.sendRelocationRequest(this.formGroup.value).subscribe((result) => {
+      this.backendService.sendRelocationRequest(this.formGroup.value).subscribe(result => {
         if (result) {
           this.reset();
           this.isShowPositiveRequest = true;
@@ -100,14 +100,14 @@ export class RequestRelocationComponent implements OnInit {
       toStreet: '',
       toFloor: 0,
       toElevator: false,
-      packagingService: false
+      packagingService: false,
     });
 
     Object.values(this.formGroup.controls).forEach(control => {
       control.markAsPristine();
       control.markAsUntouched();
     });
-    
+
     this.isShowPositiveRequest = false;
     this.isShowNegativeRequest = false;
   }

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testin
 
 import { RequestRelocationComponent } from './request-relocation.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';  
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -11,7 +11,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { By } from '@angular/platform-browser';
 import { RelocationRequestBackendService } from '../shared/relocation-request-backend.service';
 import { of } from 'rxjs';
-
 
 describe('RequestRelocationComponent', () => {
   let component: RequestRelocationComponent;
@@ -23,20 +22,17 @@ describe('RequestRelocationComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [
-        RequestRelocationComponent, 
-        ReactiveFormsModule, 
-        NoopAnimationsModule, 
-        MatFormFieldModule, 
-        MatInputModule, 
-        MatCheckboxModule, 
-        MatDatepickerModule, 
-        MatNativeDateModule
+        RequestRelocationComponent,
+        ReactiveFormsModule,
+        NoopAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
       ],
-      providers: [
-        { provide: RelocationRequestBackendService, useValue: mockBackendService }
-      ]
-    })
-    .compileComponents();
+      providers: [{ provide: RelocationRequestBackendService, useValue: mockBackendService }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RequestRelocationComponent);
     component = fixture.componentInstance;
@@ -61,7 +57,7 @@ describe('RequestRelocationComponent', () => {
       'toStreet',
       'toFloor',
       'toElevator',
-      'packagingService'
+      'packagingService',
     ];
 
     controls.forEach(control => {
@@ -93,7 +89,7 @@ describe('RequestRelocationComponent', () => {
       toStreet: 'Ringstrasse 2',
       toFloor: '1',
       toElevator: false,
-      packagingService: true
+      packagingService: true,
     });
 
     fixture.detectChanges();
@@ -119,14 +115,14 @@ describe('RequestRelocationComponent', () => {
       toStreet: 'Ringstrasse 2',
       toFloor: 1,
       toElevator: false,
-      packagingService: true
+      packagingService: true,
     });
-  
+
     fixture.detectChanges();
 
     const sendRequestButton = fixture.nativeElement.querySelector('[data-testid="sendbutton"]');
     sendRequestButton.click();
-  
+
     tick();
     fixture.detectChanges();
 
@@ -149,14 +145,14 @@ describe('RequestRelocationComponent', () => {
       toStreet: 'Ringstrasse 2',
       toFloor: 1,
       toElevator: false,
-      packagingService: true
+      packagingService: true,
     });
-  
+
     fixture.detectChanges();
-  
+
     component.onSubmit();
     fixture.detectChanges();
-  
+
     const positivemessage = fixture.nativeElement.querySelector('[data-testid="positiverequestmessage"]');
     expect(positivemessage).toBeTruthy();
 
@@ -180,14 +176,14 @@ describe('RequestRelocationComponent', () => {
       toStreet: 'Ringstrasse 2',
       toFloor: 1,
       toElevator: false,
-      packagingService: true
+      packagingService: true,
     });
-  
+
     fixture.detectChanges();
-  
+
     component.onSubmit();
     fixture.detectChanges();
-  
+
     const positivemessage = fixture.nativeElement.querySelector('[data-testid="positiverequestmessage"]');
     expect(positivemessage).not.toBeTruthy();
 

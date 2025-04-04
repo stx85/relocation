@@ -5,9 +5,9 @@ import { Component } from '@angular/core';
   selector: 'app-header',
   imports: [],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   public title = 'Relocation';
-  public imagePath = "./../assets/images/relocation.jpg";
+  public imagePath = './../assets/images/relocation.jpg';
 }

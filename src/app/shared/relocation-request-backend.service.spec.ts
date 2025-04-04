@@ -9,12 +9,8 @@ describe('RelocationRequestBackendService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
-      ],
-      providers: [
-        RelocationRequestBackendService
-      ]
+      imports: [HttpClientTestingModule],
+      providers: [RelocationRequestBackendService],
     });
 
     service = TestBed.inject(RelocationRequestBackendService);
@@ -29,12 +25,12 @@ describe('RelocationRequestBackendService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return true on successful POST request', (done) => {
+  it('should return true on successful POST request', done => {
     const requestData: Partial<RelocationRequest> = {
       clientName: 'Max Mustermann',
       fromCity: 'Berlin',
       toCity: 'Hamburg',
-      relocationDate: new Date()
+      relocationDate: new Date(),
     };
 
     service.sendRelocationRequest(requestData).subscribe(result => {
@@ -50,9 +46,9 @@ describe('RelocationRequestBackendService', () => {
     req.flush({ id: 1, ...requestData });
   });
 
-  it('should return false on HTTP error', (done) => {
+  it('should return false on HTTP error', done => {
     const requestData: Partial<RelocationRequest> = {
-      clientName: 'Error Case'
+      clientName: 'Error Case',
     };
 
     service.sendRelocationRequest(requestData).subscribe(result => {

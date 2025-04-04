@@ -1,5 +1,5 @@
-import { RelocationRequest } from "./relocation-request";
+import { RelocationRequest } from './relocation-request';
 
 export interface RelocationRequestEmbedded {
-    request: RelocationRequest[];
+  request: RelocationRequest[];
 }

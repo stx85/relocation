@@ -4,13 +4,12 @@ import { RelocationRequest } from './interfaces/relocation-request';
 import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RelocationRequestBackendService {
+  private apiUrl = 'http://localhost:8090/request';
 
-  private apiUrl = "http://localhost:8090/request";
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public sendRelocationRequest(data: Partial<RelocationRequest>): Observable<boolean> {
     const url = `${this.apiUrl}`;
@@ -20,7 +19,7 @@ export class RelocationRequestBackendService {
 
     return this.http.post<RelocationRequest>(url, data, { headers }).pipe(
       map(() => true),
-      catchError((error) => {
+      catchError(error => {
         console.error('Error:', error);
         return of(false);
       })

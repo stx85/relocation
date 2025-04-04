@@ -1,133 +1,131 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-    <div class="container mt-4">
-        <h2 class="text-center">Add Request</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <mat-form-field class="custom-form">
-                    <mat-label data-testid="clientname_label">Client Name</mat-label>
-                    <input matInput required data-testid="clientname" type="input" formControlName="clientName">
-                    <mat-error data-testid="clientname_error">You have to provide a client name!</mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-5 col-12">
-                <mat-form-field>
-                    <mat-label data-testid="relocationdate_label">Relocation date</mat-label>
-                    <input matInput data-testid="relocationdate" [matDatepicker]="datepicker" formControlName="relocationDate">
-                    <mat-datepicker #datepicker/>
-                    <mat-datepicker-toggle [for]="datepicker" matSuffix/>
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-error data-testid="relocationdate_error">Please provide relocation date!</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="col-md-5 col-12">
-                <mat-form-field>
-                    <mat-label data-testid="relocationtime_label">Relocation time</mat-label>
-                    <input matInput data-testid="relocationtime"
-                        [matTimepicker]="timepicker"
-                        formControlName="relocationDate">
-                    <mat-timepicker #timepicker/>
-                    <mat-timepicker-toggle [for]="timepicker" matSuffix/>
-                    <mat-hint>HH:mm</mat-hint>
-                    <mat-error data-testid="relocationtime_error">Please provide relocation time!</mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-5 col-12">
-                <h4>Address from</h4>
-                <div class="mb-2">
-                    <mat-form-field class="custom-form">
-                        <mat-label data-testid="cityfrom_label">City from</mat-label>
-                        <input matInput required data-testid="cityfrom" type="input" formControlName="fromCity">
-                        <mat-error data-testid="cityfrom_error">You have to provide a city!</mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="mb-2">
-                    <mat-form-field class="custom-form">
-                        <mat-label data-testid="zipfrom_label">ZIP from</mat-label>
-                        <input matInput required data-testid="zipfrom" type="input" formControlName="fromZip">
-                        <mat-error data-testid="zipfrom_error">You have to provide a ZIP!</mat-error>
-                        <mat-hint data-testid="zipfrom_hint">e.g. 7011</mat-hint>
-                    </mat-form-field>
-                </div>
-                <div class="mb-2">
-                    <mat-form-field class="custom-form">
-                        <mat-label data-testid="streetfrom_label">Street from</mat-label>
-                        <input matInput required data-testid="streetfrom" type="input" formControlName="fromStreet">
-                        <mat-error data-testid="streetfrom_error">You have to provide a street!</mat-error>
-                        <mat-hint data-testid="streetfrom_hint">e.g. example street 34</mat-hint>
-                    </mat-form-field>
-                </div>
-                <div class="mb-2">
-                    <mat-form-field class="custom-form">
-                        <mat-label data-testid="floorfrom_label">Floor from</mat-label>
-                        <input matInput required data-testid="floorfrom" type="input" formControlName="fromFloor">
-                        <mat-error data-testid="floorfrom_error">You have to provide a street!</mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="mb-2">
-                    <mat-checkbox data-testid="elevatorfrom" formControlName="fromElevator">Elevator present</mat-checkbox>
-                </div>
-            </div>
-            <div class="col-md-5 col-12">
-                <h4>Address to</h4>
-                <div class="mb-2">
-                    <mat-form-field class="custom-form">
-                        <mat-label data-testid="cityto_label">City to</mat-label>
-                        <input matInput required data-testid="cityto" type="input" formControlName="toCity">
-                        <mat-error data-testid="cityto_error">You have to provide a city!</mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="mb-2">
-                    <mat-form-field class="custom-form">
-                        <mat-label data-testid="zipto_label">ZIP to</mat-label>
-                        <input matInput required data-testid="zipto" type="input" formControlName="toZip">
-                        <mat-error data-testid="zipto_error">You have to provide a ZIP!</mat-error>
-                        <mat-hint data-testid="zipto_hint">e.g. 7020</mat-hint>
-                    </mat-form-field>
-                </div>
-                <div class="mb-2">
-                    <mat-form-field class="custom-form">
-                        <mat-label data-testid="streetto_label">Street to</mat-label>
-                        <input matInput required data-testid="streetto" type="input" formControlName="toStreet">
-                        <mat-error data-testid="streetto_error">You have to provide a street!</mat-error>
-                        <mat-hint data-testid="streetto_hint">e.g. other street 5</mat-hint>
-                    </mat-form-field>
-                </div>
-                <div class="mb-2">
-                    <mat-form-field class="custom-form">
-                        <mat-label data-testid="floorto_label">Floor to</mat-label>
-                        <input matInput required data-testid="floorto" type="input" formControlName="toFloor">
-                        <mat-error data-testid="floorto_error">You have to provide a street!</mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="mb-2">
-                    <mat-checkbox data-testid="elevatorto" formControlName="toElevator">Elevator present</mat-checkbox>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-6 text-center">
-                <mat-checkbox data-testid="packagingservice" formControlName="packagingService">Packaging service</mat-checkbox>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-4">
-            <div class="col-12 text-center">
-                <h5 class="positiveresponse" *ngIf="isShowPositiveRequest" data-testid="positiverequestmessage">Successfully requested!</h5>
-                <h5 class="negativeresponse" *ngIf="isShowNegativeRequest" data-testid="negativerequestmessage">Error while requesting!</h5>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-4">
-            <div class="col-12 text-center">
-                <button [disabled]="formGroup.invalid" data-testid="sendbutton" class="btn btn-primary custom-btn" type="submit">Send request</button>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-2">
-            <div class="col-12 text-center">
-                <button data-testid="abortbutton" class="btn btn-Secondary custom-btn" type="button" (click)="abortClicked()">Abort</button>
-            </div>
-        </div>
+  <div class="container mt-4">
+    <h2 class="text-center">Add Request</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <mat-form-field class="custom-form">
+          <mat-label data-testid="clientname_label">Client Name</mat-label>
+          <input matInput required data-testid="clientname" type="input" formControlName="clientName" />
+          <mat-error data-testid="clientname_error">You have to provide a client name!</mat-error>
+        </mat-form-field>
+      </div>
     </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-md-5 col-12">
+        <mat-form-field>
+          <mat-label data-testid="relocationdate_label">Relocation date</mat-label>
+          <input matInput data-testid="relocationdate" [matDatepicker]="datepicker" formControlName="relocationDate" />
+          <mat-datepicker #datepicker />
+          <mat-datepicker-toggle [for]="datepicker" matSuffix />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-error data-testid="relocationdate_error">Please provide relocation date!</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-5 col-12">
+        <mat-form-field>
+          <mat-label data-testid="relocationtime_label">Relocation time</mat-label>
+          <input matInput data-testid="relocationtime" [matTimepicker]="timepicker" formControlName="relocationDate" />
+          <mat-timepicker #timepicker />
+          <mat-timepicker-toggle [for]="timepicker" matSuffix />
+          <mat-hint>HH:mm</mat-hint>
+          <mat-error data-testid="relocationtime_error">Please provide relocation time!</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-md-5 col-12">
+        <h4>Address from</h4>
+        <div class="mb-2">
+          <mat-form-field class="custom-form">
+            <mat-label data-testid="cityfrom_label">City from</mat-label>
+            <input matInput required data-testid="cityfrom" type="input" formControlName="fromCity" />
+            <mat-error data-testid="cityfrom_error">You have to provide a city!</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mb-2">
+          <mat-form-field class="custom-form">
+            <mat-label data-testid="zipfrom_label">ZIP from</mat-label>
+            <input matInput required data-testid="zipfrom" type="input" formControlName="fromZip" />
+            <mat-error data-testid="zipfrom_error">You have to provide a ZIP!</mat-error>
+            <mat-hint data-testid="zipfrom_hint">e.g. 7011</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="mb-2">
+          <mat-form-field class="custom-form">
+            <mat-label data-testid="streetfrom_label">Street from</mat-label>
+            <input matInput required data-testid="streetfrom" type="input" formControlName="fromStreet" />
+            <mat-error data-testid="streetfrom_error">You have to provide a street!</mat-error>
+            <mat-hint data-testid="streetfrom_hint">e.g. example street 34</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="mb-2">
+          <mat-form-field class="custom-form">
+            <mat-label data-testid="floorfrom_label">Floor from</mat-label>
+            <input matInput required data-testid="floorfrom" type="input" formControlName="fromFloor" />
+            <mat-error data-testid="floorfrom_error">You have to provide a street!</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mb-2">
+          <mat-checkbox data-testid="elevatorfrom" formControlName="fromElevator">Elevator present</mat-checkbox>
+        </div>
+      </div>
+      <div class="col-md-5 col-12">
+        <h4>Address to</h4>
+        <div class="mb-2">
+          <mat-form-field class="custom-form">
+            <mat-label data-testid="cityto_label">City to</mat-label>
+            <input matInput required data-testid="cityto" type="input" formControlName="toCity" />
+            <mat-error data-testid="cityto_error">You have to provide a city!</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mb-2">
+          <mat-form-field class="custom-form">
+            <mat-label data-testid="zipto_label">ZIP to</mat-label>
+            <input matInput required data-testid="zipto" type="input" formControlName="toZip" />
+            <mat-error data-testid="zipto_error">You have to provide a ZIP!</mat-error>
+            <mat-hint data-testid="zipto_hint">e.g. 7020</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="mb-2">
+          <mat-form-field class="custom-form">
+            <mat-label data-testid="streetto_label">Street to</mat-label>
+            <input matInput required data-testid="streetto" type="input" formControlName="toStreet" />
+            <mat-error data-testid="streetto_error">You have to provide a street!</mat-error>
+            <mat-hint data-testid="streetto_hint">e.g. other street 5</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="mb-2">
+          <mat-form-field class="custom-form">
+            <mat-label data-testid="floorto_label">Floor to</mat-label>
+            <input matInput required data-testid="floorto" type="input" formControlName="toFloor" />
+            <mat-error data-testid="floorto_error">You have to provide a street!</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mb-2">
+          <mat-checkbox data-testid="elevatorto" formControlName="toElevator">Elevator present</mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-md-6 text-center">
+        <mat-checkbox data-testid="packagingservice" formControlName="packagingService">Packaging service</mat-checkbox>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-12 text-center">
+        <h5 class="positiveresponse" *ngIf="isShowPositiveRequest" data-testid="positiverequestmessage">Successfully requested!</h5>
+        <h5 class="negativeresponse" *ngIf="isShowNegativeRequest" data-testid="negativerequestmessage">Error while requesting!</h5>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-12 text-center">
+        <button [disabled]="formGroup.invalid" data-testid="sendbutton" class="btn btn-primary custom-btn" type="submit">Send request</button>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-2">
+      <div class="col-12 text-center">
+        <button data-testid="abortbutton" class="btn btn-Secondary custom-btn" type="button" (click)="abortClicked()">Abort</button>
+      </div>
+    </div>
+  </div>
 </form>

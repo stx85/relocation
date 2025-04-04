@@ -8,10 +8,10 @@ import { RelocationRequestBackendService } from './shared/relocation-request-bac
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(),
     RelocationRequestBackendService,
-  ]
+  ],
 };
