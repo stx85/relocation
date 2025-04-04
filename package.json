@@ -16,6 +16,14 @@
     "format:fix": "npx prettier src --write",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "**/*.{ts}": [
+      "eslint --fix"
+    ],
+    "**/*.{html,scss,json,md}": [
+      "prettier --write"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
