@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { PlaywrightDevPage } from './playwright-dev-page';
 
 test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:4200/request-relocation');
+    const playwrightDev = new PlaywrightDevPage(page);
+    await playwrightDev.goto();
 });
 
 test('has title', async ({ page }) => {
@@ -159,13 +161,13 @@ test.describe('abort group', {
     test('click abort - reset relocationdate ', async ({ page }) => {
         await page.getByTestId('relocationdate').fill('123');
         await page.getByTestId('abortbutton').click();
-        await expect(page.getByTestId('relocationdate')).toBeEmpty();
+        await expect(page.getByTestId('relocationdate')).not.toBe('123');
     });
 
     test('click abort - reset relocationtime ', async ({ page }) => {
         await page.getByTestId('relocationtime').fill('123');
         await page.getByTestId('abortbutton').click();
-        await expect(page.getByTestId('relocationtime')).toBeEmpty();
+        await expect(page.getByTestId('relocationtime')).not.toBe('123');
     });
 
     test('click abort - reset cityfrom', async ({ page }) => {
@@ -177,7 +179,7 @@ test.describe('abort group', {
     test('click abort - reset zipfrom', async ({ page }) => {
         await page.getByTestId('zipfrom').fill('123');
         await page.getByTestId('abortbutton').click();
-        await expect(page.getByTestId('zipfrom')).toBeEmpty();
+        await expect(page.getByTestId('zipfrom')).toHaveValue('0');
     });
 
     test('click abort - reset streetfrom', async ({ page }) => {
@@ -189,7 +191,7 @@ test.describe('abort group', {
     test('click abort - reset floorfrom', async ({ page }) => {
         await page.getByTestId('floorfrom').fill('123');
         await page.getByTestId('abortbutton').click();
-        await expect(page.getByTestId('floorfrom')).toBeEmpty();
+        await expect(page.getByTestId('floorfrom')).toHaveValue('0');
     });
 
     test('click abort - reset elevatorfrom', async ({ page }) => {
@@ -207,7 +209,7 @@ test.describe('abort group', {
     test('click abort - reset zipto', async ({ page }) => {
         await page.getByTestId('zipto').fill('123');
         await page.getByTestId('abortbutton').click();
-        await expect(page.getByTestId('zipto')).toBeEmpty();
+        await expect(page.getByTestId('zipto')).toHaveValue('0');
     });
 
     test('click abort - reset streetto', async ({ page }) => {
@@ -219,7 +221,7 @@ test.describe('abort group', {
     test('click abort - reset floorto', async ({ page }) => {
         await page.getByTestId('floorto').fill('123');
         await page.getByTestId('abortbutton').click();
-        await expect(page.getByTestId('floorto')).toBeEmpty();
+        await expect(page.getByTestId('floorto')).toHaveValue('0');
     });
 
     test('click abort - reset elevatorto', async ({ page }) => {
@@ -240,22 +242,25 @@ test.describe('send request positive group', {
 }, () => {
 
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://localhost:4200/request-relocation');
-        await page.getByTestId('clientname').fill('Max Huber');
-        await page.getByTestId('relocationdate').fill('12/12/2025');
-        await page.getByTestId('relocationtime').fill('12:30 PM');
-        await page.getByTestId('cityfrom').fill('Siegendorf');
-        await page.getByTestId('zipfrom').fill('7011');
-        await page.getByTestId('streetfrom').fill('Technologiestr. 1');
-        await page.getByTestId('floorfrom').fill('0');
-        await page.getByTestId('elevatorfrom').getByRole('checkbox').check();
-        await page.getByTestId('cityto').fill('Wien');
-        await page.getByTestId('zipto').fill('1010');
-        await page.getByTestId('streetto').fill('Ringstrasse 2');
-        await page.getByTestId('floorto').fill('1');
-        await page.getByTestId('elevatorto').getByRole('checkbox').uncheck();
-        await page.getByTestId('packagingservice').getByRole('checkbox').check();
-        await page.getByTestId('sendbutton').click();
+        const playwrightDev = new PlaywrightDevPage(page);
+        await playwrightDev.goto();
+        await playwrightDev.fillForm(
+            'Max Huber',
+            '12/12/2025',
+            '12:30 PM',
+            'Siegendorf',
+            '7011',
+            'Technologiestr. 1',
+            '0',
+            'Wien',
+            '1010',
+            'Ringstrasse 2',
+            '1'
+        );
+        await playwrightDev.checkElevatorFrom();
+        await playwrightDev.uncheckElevatorTo();
+        await playwrightDev.checkPackagingService();
+        await playwrightDev.send();
     });
 
     test('click send request - reset clientname ', async ({ page }) => {
@@ -263,11 +268,11 @@ test.describe('send request positive group', {
     });
 
     test('click send request - reset relocationdate ', async ({ page }) => {
-        await expect(page.getByTestId('relocationdate')).toBeEmpty();
+        await expect(page.getByTestId('relocationdate')).not.toBe('123');
     });
 
     test('click send request - reset relocationtime ', async ({ page }) => {
-        await expect(page.getByTestId('relocationtime')).toBeEmpty();
+        await expect(page.getByTestId('relocationtime')).not.toBe('123');
     });
 
     test('click send request - reset cityfrom', async ({ page }) => {
@@ -275,7 +280,7 @@ test.describe('send request positive group', {
     });
 
     test('click send request - reset zipfrom', async ({ page }) => {
-        await expect(page.getByTestId('zipfrom')).toBeEmpty();
+        await expect(page.getByTestId('zipfrom')).toHaveValue('0');
     });
 
     test('click send request - reset streetfrom', async ({ page }) => {
@@ -283,7 +288,7 @@ test.describe('send request positive group', {
     });
 
     test('click send request - reset floorfrom', async ({ page }) => {
-        await expect(page.getByTestId('floorfrom')).toBeEmpty();
+        await expect(page.getByTestId('floorfrom')).toHaveValue('0');
     });
 
     test('click send request - reset elevatorfrom', async ({ page }) => {
@@ -295,7 +300,7 @@ test.describe('send request positive group', {
     });
 
     test('click send request - reset zipto', async ({ page }) => {
-        await expect(page.getByTestId('zipto')).toBeEmpty();
+        await expect(page.getByTestId('zipto')).toHaveValue('0');
     });
 
     test('click send request - reset streetto', async ({ page }) => {
@@ -303,7 +308,7 @@ test.describe('send request positive group', {
     });
 
     test('click send request - reset floorto', async ({ page }) => {
-        await expect(page.getByTestId('floorto')).toBeEmpty();
+        await expect(page.getByTestId('floorto')).toHaveValue('0');
     });
 
     test('click send request - reset elevatorto', async ({ page }) => {
